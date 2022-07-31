@@ -8,7 +8,7 @@ export default function ChatMessage(props) {
 
   return (
     <div className={`messageContainer ${messageClass}`}>
-        <img className='messageAvatar' src={photoURL}/>
+        <img alt="user avatar" className='messageAvatar' src={photoURL}/>
         <p className='messageText'>{text}</p>
     </div>
   )
