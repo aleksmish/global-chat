@@ -8,9 +8,13 @@ export default function SignIn() {
     }
 
     return (
-        <div>
-            <div>SignIn</div>
-            <button onClick={signInWithGoogle}>Sign in with Google</button>
+        <div className='wrapperChat'>
+            <header className='headerSignIn'>
+                <h1>Global Chat 🌐</h1>
+            </header>
+            <div className='containerSignIn'>
+                <button onClick={signInWithGoogle} className='button signIn'>Sign in with Google</button>
+            </div>
         </div>
         )
 }
