@@ -58,7 +58,7 @@ function ChatRoom() {
       <>
     <div className="wrapperChat">
       <header>
-          <button ref = {scrollDown} className='button scrollDown' onClick={()=>bottomChat.current.scrollIntoView({behavior: "smooth"})}>⏬</button>
+          <button ref = {scrollDown} className='button scrollDown' onClick={()=>bottomChat.current.scrollIntoView({behavior: "smooth"})}>🔽</button>
           <button className="button signOut" onClick={signOut}>Sign Out</button>
       </header>
       <main ref={listRef} onScroll={onScroll}>
