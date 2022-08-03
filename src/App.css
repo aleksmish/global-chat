@@ -10,13 +10,6 @@
     max-width: 710px;
 }
 
-@media (orientation: landscape) {
-    .App{
-        max-width: 100vw;
-    }    
-}
-
-
 * {
     padding: 0;
     margin: 0;
