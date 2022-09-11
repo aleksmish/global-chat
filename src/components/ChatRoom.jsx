@@ -8,11 +8,9 @@ function ChatRoom() {
 
     const [inputVal, setInputVal] = useState('')
 
-
     const bottomChat = useRef()
     const listRef = useRef();
     const scrollDown = useRef();
-    
     
     const messagesRef = collection(db, 'messages')
     let q = query(messagesRef, orderBy('createdAt', 'asc'), limitToLast(35))
@@ -44,7 +42,7 @@ function ChatRoom() {
       if (listRef.current) {
         const { scrollTop, scrollHeight, clientHeight } = listRef.current;
         
-        if (scrollTop + clientHeight >= scrollHeight-100 ) {
+        if (scrollTop + clientHeight >= scrollHeight-5 ) {
           scrollDown.current.style.opacity = 0.5;
         }
         else{
@@ -55,24 +53,24 @@ function ChatRoom() {
     
     useEffect(() => bottomChat.current.scrollIntoView({behavior:"smooth"}), [])
     return (
-      <>
-    <div className="wrapperChat">
-      <header>
-          <button ref = {scrollDown} className='button scrollDown' onClick={()=>bottomChat.current.scrollIntoView({behavior: "smooth"})}>🔽</button>
-          <button className="button signOut" onClick={signOut}>Sign Out</button>
-      </header>
-      <main ref={listRef} onScroll={onScroll}>
-        {messages && messages.docs.map(msg => <ChatMessage key={msg.id} message={msg.data()}/>)}
-        <div ref={bottomChat}></div>
-      </main>
-    
+    <>
+      <div className="wrapperChat">
+        <header>
+            <button ref = {scrollDown} className='button scrollDown' onClick={()=>bottomChat.current.scrollIntoView({behavior: "smooth"})}>🔽</button>
+            <button className="button signOut" onClick={signOut}>Sign Out</button>
+        </header>
+        <main ref={listRef} onScroll={onScroll}>
+          {messages && messages.docs.map(msg => <ChatMessage key={msg.id} message={msg.data()}/>)}
+          <div ref={bottomChat}></div>
+        </main>
+      
 
-      <form onSubmit={sendMessage}>
-        <input className='inputText' type="text" placeholder='Enter a message' value={inputVal} onChange={(e)=>setInputVal(e.target.value)}/>
-        <button className='button input' type="submit" disabled={inputVal === ''}>Send</button>
-      </form>
-      </div>
-    </>
+        <form onSubmit={sendMessage}>
+          <input className='inputText' type="text" placeholder='Enter a message' value={inputVal} onChange={(e)=>setInputVal(e.target.value)}/>
+          <button className='button input' type="submit" disabled={inputVal === ''}>Send</button>
+        </form>
+        </div>
+      </>
   )
 }
 
